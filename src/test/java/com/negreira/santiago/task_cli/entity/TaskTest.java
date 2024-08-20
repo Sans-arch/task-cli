@@ -1,5 +1,7 @@
 package com.negreira.santiago.task_cli.entity;
 
+import com.negreira.santiago.task_cli.domain.entity.Task;
+import com.negreira.santiago.task_cli.domain.entity.TaskStatus;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

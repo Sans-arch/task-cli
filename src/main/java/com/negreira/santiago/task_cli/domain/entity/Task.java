@@ -1,4 +1,4 @@
-package com.negreira.santiago.task_cli.entity;
+package com.negreira.santiago.task_cli.domain.entity;
 
 public class Task {
     private String id;
