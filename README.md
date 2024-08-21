@@ -31,7 +31,7 @@ Task CLI is a command-line interface application designed to manage tasks effici
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/task-cli.git
+    git clone https://github.com/Sans-arch/task-cli
     cd task-cli
     ```
 
