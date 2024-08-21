@@ -4,22 +4,27 @@ import com.negreira.santiago.task_cli.domain.entity.Task;
 import com.negreira.santiago.task_cli.domain.entity.TaskStatus;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TaskTest {
 
     @Test
     void shouldCreateTask() {
-        Task task = new Task("1", "Buy groceries and cook dinner");
+        var id = UUID.randomUUID();
+        Task task = new Task(id,"Buy groceries and cook dinner");
 
-        assertEquals("1", task.getId());
+        assertEquals(id, task.getId());
         assertEquals("Buy groceries and cook dinner", task.getDescription());
         assertEquals(TaskStatus.PENDING, task.getStatus());
     }
 
     @Test
     void shouldPutTaskInProgress() {
-        Task task = new Task("1", "Buy groceries and cook dinner");
+        var id = UUID.randomUUID();
+        Task task = new Task(id, "Buy groceries and cook dinner");
+        assertEquals(id, task.getId());
         assertEquals(TaskStatus.PENDING, task.getStatus());
 
         task.putInProgress();
@@ -28,7 +33,9 @@ class TaskTest {
 
     @Test
     void shouldCompleteTask() {
-        Task task = new Task("1", "Buy groceries and cook dinner");
+        var id = UUID.randomUUID();
+        Task task = new Task(id, "Buy groceries and cook dinner");
+        assertEquals(id, task.getId());
         assertEquals(TaskStatus.PENDING, task.getStatus());
 
         task.completeTask();
