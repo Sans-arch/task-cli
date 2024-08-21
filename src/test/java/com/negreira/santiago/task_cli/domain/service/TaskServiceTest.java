@@ -5,9 +5,11 @@ import com.negreira.santiago.task_cli.domain.repository.TaskRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 class TaskServiceTest {
 
@@ -37,6 +39,19 @@ class TaskServiceTest {
 
         assertThrows(IllegalArgumentException.class, () -> taskService.createTask(null));
         Mockito.verify(mockTaskRepository, Mockito.never()).save(any());
+    }
+
+    @Test
+    void shouldGetExistingTask() {
+        TaskRepository mockTaskRepository = Mockito.mock(TaskRepository.class);
+        TaskService taskService = new TaskService(mockTaskRepository);
+        Task createdTask = taskService.createTask("new task to be created");
+        when(mockTaskRepository.findById(createdTask.getId())).thenReturn(createdTask);
+
+        Task result = taskService.getTask(createdTask.getId());
+
+        Mockito.verify(mockTaskRepository, times(1)).findById(createdTask.getId());
+        assertEquals(createdTask.getId(), result.getId());
     }
 
 }

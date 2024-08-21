@@ -5,6 +5,8 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
+import java.util.UUID;
+
 @ShellComponent
 public class TaskCommand {
     private final TaskService taskService;
@@ -13,19 +15,15 @@ public class TaskCommand {
         this.taskService = taskService;
     }
 
-    @ShellMethod(key = "create-task", value = "Create a new task")
+    @ShellMethod(key = "task create", value = "Create a new task")
     public String createTask(@ShellOption String taskDescription) {
         var createdTask = taskService.createTask(taskDescription);
         return "Task created with id: " + createdTask.getId();
     }
 
-    @ShellMethod(key = "hello", value = "Say hello")
-    public String hello(@ShellOption String arg) {
-        return "Hello, world " + arg;
+    @ShellMethod(key = "task get", value = "Get an existing task")
+    public String getTask(@ShellOption UUID id) {
+        return taskService.getTask(id).describe();
     }
 
-    @ShellMethod(key = "goodbye", value = "Say goodbye")
-    public String goodbye() {
-        return "Goodbye!";
-    }
 }

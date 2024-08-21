@@ -43,4 +43,12 @@ public class Task {
     public void completeTask() {
         this.status = TaskStatus.DONE;
     }
+
+    public String describe() {
+        return "Task{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

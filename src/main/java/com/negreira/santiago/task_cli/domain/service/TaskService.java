@@ -21,4 +21,7 @@ public class TaskService {
         return task;
     }
 
+    public Task getTask(UUID id) {
+        return taskRepository.findById(id);
+    }
 }
