@@ -1,17 +1,30 @@
 package com.negreira.santiago.task_cli.domain.entity;
 
+import java.util.UUID;
+
 public class Task {
-    private String id;
-    private String description;
+    private final UUID id;
+    private final String description;
     private TaskStatus status;
 
-    public Task(String id, String description) {
+    public Task(UUID id, String description) {
         this.id = id;
         this.description = description;
         this.status = TaskStatus.PENDING;
+        this.validate();
     }
 
-    public String getId() {
+    private void validate() {
+        if (id == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
+
+        if (description == null || description.isBlank()) {
+            throw new IllegalArgumentException("Description cannot be null or empty");
+        }
+    }
+
+    public UUID getId() {
         return id;
     }
 
