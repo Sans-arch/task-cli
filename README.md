@@ -59,6 +59,11 @@ Once the application is running, you can use the CLI to manage tasks. Here are s
     task list
     ```
 
+- **Get an existing task**:
+    ```sh
+    task get <task-id>
+    ```
+
 - **Update a task status**:
     ```sh
     task update <task-id> --status COMPLETED
