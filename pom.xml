@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.negreira.santiago</groupId>
 	<artifactId>task-cli</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>task-cli</name>
 	<description>Task CLI app</description>
 	<url/>
@@ -81,6 +81,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>task-cli</finalName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
